@@ -1,7 +1,7 @@
 {
-  "name": "2017fall",
+  "name": "fitnesstrackerproject",
   "version": "1.0.0",
-  "description": "what do you meme",
+  "description": "Fitness Tracker Project for Web Programming Fall 2017",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jewpaltz/2017fall.git"
+    "url": "git+https://github.com/SylumMastropaolo/FitnessTrackerProject"
 },
   "dependencies": {
     "express": "^4.15.4",
