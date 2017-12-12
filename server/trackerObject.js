@@ -1,8 +1,8 @@
 
 module.exports = {
     exercises: [
-        { text: "Cardio" },
-        { text: "Stretching" },
-        { text: "Weight training" }
+        { name: "Cardio" },
+        { name: "Stretching" },
+        { name: "Weight training" }
     ]
 }

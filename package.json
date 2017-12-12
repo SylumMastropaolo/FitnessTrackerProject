@@ -2,11 +2,12 @@
   "name": "fitnesstrackerproject",
   "version": "1.0.0",
   "description": "Fitness Tracker Project for Web Programming Fall 2017",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "sass": "node-sass jquery-mockup/src --output jquery-mockup/dist --watch",
     "webpack:main": "webpack jquery-mockup/src/main.js jquery-mockup/dist/bundle.js --optimize-minimize",
     "ng": "ng",
+    "generate": "ng generate",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -18,9 +19,10 @@
     "url": "git+https://github.com/SylumMastropaolo/FitnessTrackerProject"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap-4": "^4.0.0",
     "express": "^4.15.4",
     "jquery": "^3.2.1",
-    "bootstrap-4": "^4.0.0",
     "popper.js": "^1.12.5",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",

@@ -4,9 +4,14 @@ const trackerController = require("./trackerController");
 
 const server = express();
 
-server.use("/client", express.static("./jquery-mockup"))
-server.use("/tracker", trackerController.router );
-    
+server.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+server.use("/tracker", trackerController.router);
+
 
 server.listen(3001);
 
