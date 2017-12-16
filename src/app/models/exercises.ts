@@ -4,7 +4,7 @@ export class exercise {
 }
 
 export class User {
-    name: string = "Sylum Mastropaolo"
+    name: string = "";
     todoList: exercise[] = [];
     doneList: exercise[] = [];
 }

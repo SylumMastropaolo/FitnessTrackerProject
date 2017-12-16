@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User, exercise} from '../models/exercises';
 import {  Http } from '@angular/http';
+import { ExerciseService } from '../models/exercise.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercises',
@@ -13,10 +15,14 @@ export class ExercisesComponent implements OnInit {
   me: User;
   newExercise: string;
 
-  constructor(private http: Http) {
-    this.me = new User();
+  constructor(private http: Http, private service: ExerciseService, private router: Router) {
+
     this.apiroot = "http://localhost:3001";
-    this.getExercises();
+
+    if(this.service.user == null) {
+      this.router.navigate(["/login"])
+    }
+    //this.getExercises();
   }
 
   ngOnInit() {
