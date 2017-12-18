@@ -45,14 +45,18 @@ export class ExerciseService {
     this.http.post(this.apiRoot + "/tracker/users", { name, password }).subscribe(
       data => {
         this.me = data.json();
+        let u: User = this.me;
         console.log(data.json());
+        this.http.post(this.apiRoot + "/tracker/exercises", { u }).subscribe(data => {
+          this.me.todoList = data.json();
+        });
         this.router.navigate(["exercises"]);
       },
       err => {
         console.log(err);
       },
       () => { }
-    )
+    );
   }
   loginFB() {
     FB.login((response: any) => {

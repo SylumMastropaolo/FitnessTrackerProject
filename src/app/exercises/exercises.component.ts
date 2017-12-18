@@ -35,19 +35,21 @@ export class ExercisesComponent implements OnInit {
 
   completeExercise(e: MouseEvent, x: exercise, i: number) {
     e.preventDefault();
-    this.me.doneList.push(x);
-    this.me.todoList.splice(i, 1);
+    // this.me.doneList.push(x);
+    // this.me.todoList.splice(i, 1);
     let u: User = this.me;
 
     this.http.post(this.service.apiRoot + "/tracker/users/user", { x, i, u }).subscribe( data => {
 
     });
+    this.me.doneList.push(x);
+    this.me.todoList.splice(i, 1);
   }
 
   removeExercise(e: MouseEvent, x: exercise, i: number) {
     e.preventDefault();
-    this.me.doneList.splice(i, 1);
-    console.log(x.name + i);
+    let xIndex = this.me.doneList.indexOf(x);
+    this.me.doneList.splice(xIndex, 1);
   }
 
   getUsers(e: MouseEvent) {
