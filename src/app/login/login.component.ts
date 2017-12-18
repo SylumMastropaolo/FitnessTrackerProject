@@ -7,8 +7,8 @@ import { ExerciseService } from '../models/exercise.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
+  username : string;
+  password : string;
 
   constructor(private service: ExerciseService) {
 
@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.service.login(this.username, this.password);
+  }
+  loginFB() {
+    this.service.loginFB();
   }
 
 }

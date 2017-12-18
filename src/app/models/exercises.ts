@@ -4,7 +4,13 @@ export class exercise {
 }
 
 export class User {
-    name: string = "";
+    id: number;
+    name: string;
     todoList: exercise[] = [];
     doneList: exercise[] = [];
+}
+
+export class Users {
+    //users: User[] = [new User(), new User()];
+    users: User[] = [];
 }

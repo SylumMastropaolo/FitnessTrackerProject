@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbotron">
-        <h3>Select the exercises that you have completed</h3>
+        <h3>Hello, {{me.name}}! Select the exercises that you have completed</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -33,10 +33,41 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        My Exercises
+                        Completed Exercises
                     </div>
                     <ul class="list-group list-group-flush" id="completed-exercises">
                         <li *ngFor="let x of me.doneList; index as i" class="list-group-item">
+                            {{x.name}}
+                            <button style="float: right" (click)="removeExercise($event, x, i)" type="button" class="btn btn-primary">X</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Other Users
+                        <button style="float: right" (click)="getUsers($event)" type="button" class="btn btn-primary">Update</button>
+                    </div>
+                    <ul class="list-group list-group-flush" id="completed-exercises">
+                        <li *ngFor="let x of Users; index as i" class="list-group-item">
+                            {{x.name}}
+                            <button style="float: right" (click)="getUsersData($event, i)" type="button" class="btn btn-primary">View</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        {{otherUser.name}}'s Exercises
+                    </div>
+                    <ul class="list-group list-group-flush" id="completed-exercises">
+                        <li *ngFor="let x of otherUser.doneList; index as i" class="list-group-item">
                             {{x.name}}
                         </li>
                     </ul>

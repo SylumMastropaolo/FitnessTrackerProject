@@ -1,8 +1,12 @@
 const express = require("express");
 const handler = require("./httpHandler")
 const trackerController = require("./trackerController");
+const bodyParser = require("body-parser");
 
 const server = express();
+
+server.use(bodyParser.urlencoded());
+server.use(bodyParser.json());
 
 server.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
