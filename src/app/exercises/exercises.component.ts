@@ -76,11 +76,12 @@ export class ExercisesComponent implements OnInit {
     this.otherUser = this.users[i];
   }
 
-  logout(e: MouseEvent){
+  logout(e: MouseEvent) {
     let u: User = this.me;
-    this.http.post(this.service.apiRoot + "/tracker/users/user/logout", {u}).subscribe(data => {
+    this.http.post(this.service.apiRoot + "/tracker/users/user/logout", { u }).subscribe(data => {
       this.me = data.json();
     })
+    this.router.navigate(["/login"])
   }
 
   // getExercises() {
