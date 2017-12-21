@@ -22,6 +22,11 @@ router
             res.status(201).send(user);
         }
     })
+    .post("/users/user/logOut", (req, res) => {
+        let userIndex = trackerModel.users.indexOf(u);
+        trackerModel.users.splice(userIndex, 1);
+        res.status(201).send(null);
+    })
     .post("/users/user/completeExercise", (req, res) => {
         trackerModel.users[req.body.u.id].doneList.push(req.body.x);
         trackerModel.users[req.body.u.id].todoList.splice(req.body.i, 1);
