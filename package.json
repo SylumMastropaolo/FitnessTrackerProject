@@ -6,7 +6,7 @@
   "scripts": {
     "sass": "node-sass jquery-mockup/src --output jquery-mockup/dist --watch",
     "webpack:main": "webpack jquery-mockup/src/main.js jquery-mockup/dist/bundle.js --optimize-minimize",
-    "ng:c9": "ng serve --public what-do-you-meme-jewpaltz-1.c9users.io:8080 --host $IP --port $PORT",
+    "ng:c9": "ng serve --public https://fitness-hacker-mastrots1.c9users.io/:8080 --host $IP --port $PORT",
     "ng": "ng",
     "generate": "ng generate",
     "start": "ng serve",

@@ -1,12 +1,24 @@
 <form class="container">
-  <div class="form-group">
-    <label>Username</label>
-    <input [(ngModel)]="username" type="text" class="form-control" placeholder="Enter username" [ngModelOptions]="{standalone: true}">
+  <div class="jumbotron ">
+    <div class="card col-md-4 col-centered" style="text-align: center">
+      <div class="card-body">
+        <h4>
+          Login
+        </h4>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input [(ngModel)]="username" type="text" class="form-control" placeholder="Enter username" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input [(ngModel)]="password" type="password" class="form-control" placeholder="Password" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <button (click)="login()" class="btn btn-primary" style="float:left">Login</button>
+        <button (click)="loginFB()" class="btn btn-primary" style="float:right">Facebook Login</button>
+      </div>
+      <div class="card-body"></div>
+    </div>
   </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input [(ngModel)]="password" type="password" class="form-control" placeholder="Password" [ngModelOptions]="{standalone: true}">
-  </div>
-  <button (click)="login()" class="btn btn-primary">Login</button>
-  <button (click)="loginFB()" class="btn btn-primary">Facebook Login</button>
 </form>

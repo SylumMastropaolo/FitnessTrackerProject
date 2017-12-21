@@ -10,7 +10,6 @@ import { NavComponent } from './nav/nav.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
 import { ExercisesComponent } from './exercises/exercises.component';
-import { SignupComponent } from './signup/signup.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ExerciseService } from './models/exercise.service';
 import { LoginComponent } from './login/login.component';
@@ -23,7 +22,6 @@ import { LoginComponent } from './login/login.component';
     IndexComponent,
     HeaderComponent,
     ExercisesComponent,
-    SignupComponent,
     AboutusComponent,
     LoginComponent,
   ],
@@ -35,7 +33,6 @@ import { LoginComponent } from './login/login.component';
       {path: "home", component: IndexComponent},
       {path: "exercises", component: ExercisesComponent},
       {path: "aboutus", component: AboutusComponent},
-      {path: "signup", component: SignupComponent},
       {path: "login", component: LoginComponent},
       {path: "", pathMatch: "full", redirectTo: "/home" }
     ])

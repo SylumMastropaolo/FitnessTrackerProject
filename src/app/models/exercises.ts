@@ -9,7 +9,3 @@ export class User {
     todoList: exercise[] = [];
     doneList: exercise[] = [];
 }
-
-// export class Users {
-//     users: User[] = [];
-// }

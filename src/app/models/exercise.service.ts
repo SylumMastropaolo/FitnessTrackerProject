@@ -37,22 +37,6 @@ export class ExerciseService {
     }(document, 'script', 'facebook-jssdk'));
   }
 
-  login(name: string, password: string) {
-    this.http.post(this.apiRoot + "/tracker/users/newUser", { name, password }).subscribe(data => {
-      this.me = data.json();
-      //this.me.todoList.push({ name: "Cardio" }, { name: "Stretching" }, { name: "Weight Training" });
-      // let u: User = this.me;
-      // this.http.post(this.apiRoot + "/tracker/exercises", { u }).subscribe(data => {
-      //   //this.me.todoList = data.json();
-      // });
-      this.router.navigate(["exercises"]);
-    },
-      err => {
-        console.log(err);
-      },
-      () => { }
-    );
-  }
   loginFB() {
     FB.login((response: any) => {
       if (response.authResponse) {
@@ -67,5 +51,16 @@ export class ExerciseService {
         console.log('User cancelled login or did not fully authorize.');
       }
     }, { scopes: 'email,user_photos,user_posts' });
+  }
+  login(name: string, password: string, fbid?: string, picture?: string) {
+    this.http.post(this.apiRoot + "/tracker/users/newUser", { name, password }).subscribe(data => {
+      this.me = data.json();
+      this.router.navigate(["exercises"]);
+    },
+      err => {
+        console.log(err);
+      },
+      () => { }
+    );
   }
 }

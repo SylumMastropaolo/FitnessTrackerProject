@@ -21,7 +21,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-10 input-group">
+                                <div class="input-group">
                                     <input [(ngModel)]="newExerciseName" type="text" class="form-control col-md-10" placeholder="Add Exercise">
                                     <button (click)="addExercise($event)" style="float: right" type="button" class="btn btn-primary">Add</button>
                                 </div>
@@ -68,6 +68,7 @@
                     <ul class="list-group list-group-flush" id="completed-exercises">
                         <li *ngFor="let x of otherUser.doneList; index as i" class="list-group-item">
                             {{x.name}}
+                            <button style="float: right" (click)="stealExercise($event, x, i)" type="button" class="btn btn-primary">Copy</button>
                         </li>
                     </ul>
                 </div>

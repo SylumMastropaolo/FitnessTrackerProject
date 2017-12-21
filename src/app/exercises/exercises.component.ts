@@ -44,6 +44,20 @@ export class ExercisesComponent implements OnInit {
       this.me = data.json();
     })
   }
+  removeExercise(e: MouseEvent, x: exercise, i: number) {
+    e.preventDefault();
+    let u: User = this.me;
+    this.http.post(this.service.apiRoot + "/tracker/users/user/removeExercise", { x, i, u }).subscribe(data => {
+      this.me = data.json();
+    })
+  }
+  stealExercise(e: MouseEvent, x: exercise, i: number) {
+    e.preventDefault();
+    let u: User = this.me;
+    this.http.post(this.service.apiRoot + "/tracker/users/user/stealExercise", { x, i, u }).subscribe(data => {
+      this.me = data.json();
+    })
+  }
 
 
   addExercise(e: MouseEvent) {
