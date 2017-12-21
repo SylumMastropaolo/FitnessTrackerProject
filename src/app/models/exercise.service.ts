@@ -37,21 +37,16 @@ export class ExerciseService {
     }(document, 'script', 'facebook-jssdk'));
   }
 
-  addToDoneList(exercise: exercise) {
-    //////////////////////////////////////////////////////////////////
-  }
-
   login(name: string, password: string) {
-    this.http.post(this.apiRoot + "/tracker/users", { name, password }).subscribe(
-      data => {
-        this.me = data.json();
-        let u: User = this.me;
-        console.log(data.json());
-        this.http.post(this.apiRoot + "/tracker/exercises", { u }).subscribe(data => {
-          this.me.todoList = data.json();
-        });
-        this.router.navigate(["exercises"]);
-      },
+    this.http.post(this.apiRoot + "/tracker/users/newUser", { name, password }).subscribe(data => {
+      this.me = data.json();
+      //this.me.todoList.push({ name: "Cardio" }, { name: "Stretching" }, { name: "Weight Training" });
+      // let u: User = this.me;
+      // this.http.post(this.apiRoot + "/tracker/exercises", { u }).subscribe(data => {
+      //   //this.me.todoList = data.json();
+      // });
+      this.router.navigate(["exercises"]);
+    },
       err => {
         console.log(err);
       },

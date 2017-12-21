@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class ExercisesComponent implements OnInit {
+  users: User[];
+
   me: User;
-  newExercise: string;
-  Users: User[];
   otherUser: User;
+
+  //ngModel vars
+  newExerciseName: string;
 
   constructor(private http: Http, private service: ExerciseService, private router: Router) { }
 
@@ -23,51 +26,77 @@ export class ExercisesComponent implements OnInit {
       this.router.navigate(["/login"])
     }
     this.me = this.service.me;
-    this.otherUser = this.me;
-    this.Users = this.service.users;
+    this.otherUser = this.service.me;
+    this.users = this.service.users;
+    setInterval(() => this.updateUsers(), 1000);
   }
 
-  getExercises() {
-    this.http.get(this.service.apiRoot + "/tracker/exercises").subscribe(data => {
-      this.me.todoList = data.json();
-    });
+  updateUsers() {
+    this.http.get(this.service.apiRoot + "/tracker/users").subscribe(data => {
+      this.users = data.json();
+    })
   }
 
   completeExercise(e: MouseEvent, x: exercise, i: number) {
     e.preventDefault();
-    // this.me.doneList.push(x);
-    // this.me.todoList.splice(i, 1);
     let u: User = this.me;
-
-    this.http.post(this.service.apiRoot + "/tracker/users/user", { x, i, u }).subscribe( data => {
-
-    });
-    this.me.doneList.push(x);
-    this.me.todoList.splice(i, 1);
-  }
-
-  removeExercise(e: MouseEvent, x: exercise, i: number) {
-    e.preventDefault();
-    let xIndex = this.me.doneList.indexOf(x);
-    this.me.doneList.splice(xIndex, 1);
-  }
-
-  getUsers(e: MouseEvent) {
-    this.http.get(this.service.apiRoot + "/tracker/users").subscribe(data => {
-      this.Users = data.json();
+    this.http.post(this.service.apiRoot + "/tracker/users/user/completeExercise", { x, i, u }).subscribe(data => {
+      this.me = data.json();
     })
   }
 
-  getUsersData(e: MouseEvent, i: number) {
-    this.http.get(this.service.apiRoot + "/tracker/users").subscribe(data => {
-      this.Users = data.json();
-    })
-    this.otherUser = this.Users[i];
+
+  addExercise(e: MouseEvent) {
+    e.preventDefault();
+
+    if (this.newExerciseName) {
+      let u: User = this.me;
+      let x: string = this.newExerciseName;
+      this.http.post(this.service.apiRoot + "/tracker/users/user/addExercise", { x, u }).subscribe(data => {
+        this.me = data.json();
+      })
+    }
   }
 
-  addNewExercise(e: MouseEvent, s: string) {
-    e.preventDefault();
-    this.me.todoList.push({ name: this.newExercise })
+  setOtherUser(e: MouseEvent, i: number) {
+    this.otherUser = this.users[i];
   }
+
+  // getExercises() {
+  //   this.http.get(this.service.apiRoot + "/tracker/exercises").subscribe(data => {
+  //     this.me.todoList = data.json();
+  //   });
+  // }
+
+  //   this.http.post(this.service.apiRoot + "/tracker/users/user/completeExercise", { x, i, u }).subscribe( data => {
+
+  //   });
+  //   this.me.doneList.push(x);
+  //   this.me.todoList.splice(i, 1);
+  // }
+
+  // removeExercise(e: MouseEvent, x: exercise, i: number) {
+  //   e.preventDefault();
+  //   let xIndex = this.me.doneList.indexOf(x);
+  //   this.me.doneList.splice(xIndex, 1);
+  // }
+
+  // getUsers(e: MouseEvent) {
+  //   this.http.get(this.service.apiRoot + "/tracker/users").subscribe(data => {
+  //     this.Users = data.json();
+  //   })
+  // }
+
+  // getUsersData(e: MouseEvent, i: number) {
+  //   this.http.get(this.service.apiRoot + "/tracker/users").subscribe(data => {
+  //     this.Users = data.json();
+  //   })
+  //   this.otherUser = this.Users[i];
+  // }
+
+  // addNewExercise(e: MouseEvent, s: string) {
+  //   e.preventDefault();
+  //   this.me.todoList.push({ name: this.newExercise })
+  // }
 
 }

@@ -10,7 +10,6 @@ export class User {
     doneList: exercise[] = [];
 }
 
-export class Users {
-    //users: User[] = [new User(), new User()];
-    users: User[] = [];
-}
+// export class Users {
+//     users: User[] = [];
+// }
