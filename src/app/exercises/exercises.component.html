@@ -7,7 +7,7 @@
                     <div class="card-header">
                         Available Exercises
                     </div>
-                    <ul class="list-group list-group-flush" id="available-exercises">
+                    <ul class="list-group list-group-flush" style="max-height: 200px; min-height: 200px; overflow: auto;" id="available-exercises">
                         <li *ngFor="let x of me.todoList; index as i" class="list-group-item">
                             {{x.name}}
                             <button style="float: right" (click)="completeExercise($event, x, i)" type="button" class="btn btn-primary">Add</button>
@@ -35,7 +35,7 @@
                     <div class="card-header">
                         Completed Exercises
                     </div>
-                    <ul class="list-group list-group-flush" id="completed-exercises">
+                    <ul class="list-group list-group-flush" style="max-height: 313px; min-height: 313px; overflow: auto;" id="completed-exercises">
                         <li *ngFor="let x of me.doneList; index as i" class="list-group-item">
                             {{x.name}}
                             <button style="float: right" (click)="removeExercise($event, x, i)" type="button" class="btn btn-primary">X</button>
@@ -52,8 +52,9 @@
                     <div class="card-header">
                         Other Users
                     </div>
-                    <ul class="list-group list-group-flush" id="completed-exercises">
+                    <ul class="list-group list-group-flush" style="max-height: 315px; min-height: 315px; overflow: auto;" id="completed-exercises">
                         <li *ngFor="let x of users; index as i" class="list-group-item">
+                            <img [src]=x.picture style="width: 35px" class="rounded"/>
                             {{x.name}}
                             <button style="float: right" (click)="setOtherUser($event, i)" type="button" class="btn btn-primary">View</button>
                         </li>
@@ -65,7 +66,7 @@
                     <div class="card-header">
                         {{otherUser.name}}'s Exercises
                     </div>
-                    <ul class="list-group list-group-flush" id="completed-exercises">
+                    <ul class="list-group list-group-flush" style="max-height: 315px; min-height: 315px; overflow: auto;" id="completed-exercises">
                         <li *ngFor="let x of otherUser.doneList; index as i" class="list-group-item">
                             {{x.name}}
                             <button style="float: right" (click)="stealExercise($event, x, i)" type="button" class="btn btn-primary">Copy</button>
@@ -76,71 +77,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- <form>
-            <div class="form-row align-items-center">
-                <div class="col-auto">
-                    <label class="sr-only" for="inlineFormInput">Name</label>
-                    <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                    <div class="input-group mb-2 mb-sm-0">
-                        <div class="input-group-addon">@</div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="form-check mb-2 mb-sm-0">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form> -->
-
-<!-- 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-row">
-                    <div class="col-auto">
-                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Add Exercise">
-                        <button style="float: right" type="button" class="btn btn-primary">Add</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Available Exercises
-                    </div>
-                    <ul class="list-group list-group-flush" id="available-exercises">
-                        <li *ngFor="let x of me.todoList; index as i" class="list-group-item">
-                            {{x.name}}
-                            <button style="float: right" (click)="completeExercise($event, x, i)" type="button" class="btn btn-primary">Add</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        My Exercises
-                    </div>
-                    <ul class="list-group list-group-flush" id="completed-exercises">
-                        <li *ngFor="let x of me.doneList; index as i" class="list-group-item">
-                            {{x.name}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->

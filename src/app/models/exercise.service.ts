@@ -44,7 +44,7 @@ export class ExerciseService {
 
         FB.api('/me?fields=name,email,picture', (response: any) => {
           console.log(response);
-          this.login(response.name, 'password');
+          this.login(response.name, 'password', response.id, response.picture.data.url);
         });
 
       } else {
@@ -53,7 +53,7 @@ export class ExerciseService {
     }, { scopes: 'email,user_photos,user_posts' });
   }
   login(name: string, password: string, fbid?: string, picture?: string) {
-    this.http.post(this.apiRoot + "/tracker/users/newUser", { name, password }).subscribe(data => {
+    this.http.post(this.apiRoot + "/tracker/users/newUser", { name, password, fbid, picture }).subscribe(data => {
       this.me = data.json();
       this.router.navigate(["exercises"]);
     },

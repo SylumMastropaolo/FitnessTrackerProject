@@ -8,13 +8,19 @@ const router = express.Router();
 router
     .get("/users", (req, res) => res.send(trackerModel.users))
     .post("/users/newUser", (req, res) => {
-        let user = { name: req.body.name, id: trackerModel.users.length, todoList: [], doneList: [] };
-        user.todoList.push({ name: "Cardio" });
-        user.todoList.push({ name: "Stretching" });
-        user.todoList.push({ name: "Weightlifting" });
-        trackerModel.users.push(user);
-        
-        res.status(201).send(user);
+        let user = trackerModel.users.find(x => ((x.name == req.body.name) && (x.password == req.body.password)));
+        console.log(user);
+        if(user){
+            res.status(201).send(user);
+        }else{
+            let user = { name: req.body.name, id: trackerModel.users.length, todoList: [], doneList: [], fbid: req.body.fbid, picture: req.body.picture, password: req.body.password };
+            user.todoList.push({ name: "Cardio" });
+            user.todoList.push({ name: "Stretching" });
+            user.todoList.push({ name: "Weightlifting" });
+            trackerModel.users.push(user);
+    
+            res.status(201).send(user);
+        }
     })
     .post("/users/user/completeExercise", (req, res) => {
         trackerModel.users[req.body.u.id].doneList.push(req.body.x);
