@@ -1,11 +1,37 @@
 const express = require("express");
 const defaultExercises = require("./defaultExercises");
+const states = require("./states.js");
 const trackerModel = require("./trackerModel");
 
 const router = express.Router();
 
 
 router
+
+    .post("/states", (req,res) => {
+
+        let str = "test"
+        console.log(req.body.search)
+        if(str.includes(req.body.search)){
+            console.log("match found");
+        }else{
+            console.log("no match");
+        }
+
+
+
+        // let results = states.filter(search => search.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10);
+        // console.log(results);
+        res.status(201);
+    })
+
+
+
+
+
+
+
+
     .get("/users", (req, res) => res.send(trackerModel.users))
     .post("/users/newUser", (req, res) => {
         let user = trackerModel.users.find(x => ((x.name == req.body.name) && (x.password == req.body.password)));

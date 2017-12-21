@@ -1,5 +1,18 @@
 <form class="container">
   <div class="jumbotron ">
+
+    <div class="form-group">
+      <input [(ngModel)]="search" class="form-control" type="text" placeholder="Search For State">
+      <button (click)="stateSearch($event)" type="button" class="btn btn-primary">typeahead</button>
+    </div>
+    <ul>
+      <li *ngFor="let x of typeahead; index as i" class="list-group-item">
+        {{x}}
+      </li>
+    </ul>
+
+
+
     <div class="card col-md-4 col-centered" style="text-align: center">
       <div class="card-body">
         <h4>
