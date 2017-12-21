@@ -3,6 +3,7 @@ const handler = require("./httpHandler")
 const trackerController = require("./trackerController");
 const bodyParser = require("body-parser");
 
+const port = 8081;
 const server = express();
 
 server.use(bodyParser.urlencoded());
@@ -17,6 +18,6 @@ server.use(function (req, res, next) {
 server.use("/tracker", trackerController.router);
 
 
-server.listen(3001);
+server.listen(port);
 
-console.log("http://localhost:3001");
+console.log(`http://localhost:${port}`);
